@@ -83,13 +83,13 @@ b:
         for (int neuron_index = 0, synapse_index = 0;   neuron_index < 200 && /*,*/ synapse_index < 10100;   ++neuron_index, synapse_index = synapse_index + 100)
         
         {
-            list_of_neurons[var]=list_of_neurons[var]-  (list_of_neurons[neuron_index]/ list_of_synapses[synapse_index]); // + на -   
+            list_of_neurons[var]=list_of_neurons[var] +  (list_of_neurons[neuron_index]/ list_of_synapses[synapse_index]); // + на -   
         } // вычитаем нейроны
     }
     
     for (int   neuron_index = 100, synapse_index = 10000; neuron_index < 200;   ++neuron_index, ++synapse_index)
     {
-        list_of_neurons[200] = list_of_neurons[200] - (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
+        list_of_neurons[200] = list_of_neurons[200] + (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
     }
 //   variable_error     = 1073741824-  list_of_neurons[200] ; // WARNING: изменение
 //########################################################################################################   
