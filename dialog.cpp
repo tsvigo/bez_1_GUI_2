@@ -10,6 +10,7 @@
 #include <QFileDialog>
 #include <QDebug>
 using namespace std;
+#include <unistd.h>
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////
 int variable_synapse_index_counter=10100; 
@@ -71,25 +72,42 @@ const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
 
     file.close();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-   
-    
-
+ // QApplication app(argc, argv);
+ // std::cout
+ qDebug()  << "нейронов: " << list_of_neurons.size();
+     //  std::cout 
+   qDebug()     << "нейрон 0: " << list_of_neurons[0];
+ //  std::cout
+  qDebug()  << "синапсов: " << list_of_synapses.size();
+      qDebug() << "синапс 0: " << list_of_synapses[0];
+   //   a.exit(0);
+   // sleep(60);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // NOTE: решение
 //////////////////////////////////////////// Solution function ////////////////////////////////////////////////////////////
 b:
-    for ( var = 100; var < 200; ++var) // This is the range of neurons
+    for ( var = 100; var < 200
+    // var <(int) list_of_neurons.size()-1
+     ; ++var) // This is the range of neurons
     {
-        for (int neuron_index = 0, synapse_index = 0;   neuron_index < 200 && /*,*/ synapse_index < 10100;   ++neuron_index, synapse_index = synapse_index + 100)
+        for (int neuron_index = 0, synapse_index = 0;
+      //    neuron_index < list_of_neurons.size()
+       // neuron_index < 198 //200
+        //  && 
+          /*,*/ synapse_index < 10100; 
+            ++neuron_index, synapse_index = synapse_index + 100)
         
         {
-            list_of_neurons[var]=list_of_neurons[var] +  (list_of_neurons[neuron_index]/ list_of_synapses[synapse_index]); // + на -   
+            list_of_neurons[var]=list_of_neurons[var] -  (list_of_neurons[neuron_index]/ list_of_synapses[synapse_index]); // + на -   
         } // вычитаем нейроны
     }
     
-    for (int   neuron_index = 100, synapse_index = 10000; neuron_index < 200;   ++neuron_index, ++synapse_index)
+    for (int   neuron_index = 100, synapse_index = 10000;
+     //neuron_index < list_of_neurons.size(), 
+    neuron_index < 200; //200
+      ++neuron_index, ++synapse_index)
     {
-        list_of_neurons[200] = list_of_neurons[200] + (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
+        list_of_neurons[200] = list_of_neurons[200] - (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
     }
 //   variable_error     = 1073741824-  list_of_neurons[200] ; // WARNING: изменение
 //########################################################################################################   
