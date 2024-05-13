@@ -79,7 +79,11 @@ const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
    qDebug()     << "нейрон 0: " << list_of_neurons[0];
  //  std::cout
   qDebug()  << "синапсов: " << list_of_synapses.size();
-      qDebug() << "синапс 0: " << list_of_synapses[0];
+  //    qDebug() << "синапс 0: " << list_of_synapses[0]; // сегментация фаулт
+  
+//  auto it = list_of_synapses.end(); // point at the last element
+// it = std::prev(it); // move one step back to get the first element (wraps around) 
+
    //   a.exit(0);
    // sleep(60);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -87,19 +91,29 @@ const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
 //////////////////////////////////////////// Solution function ////////////////////////////////////////////////////////////
 b:
     for ( var = 100; 
-   // var < 200
-   var <(int) list_of_neurons.size()+1
+   var < 200
+  // var <(int) list_of_neurons.size()//+1
      ; ++var) // This is the range of neurons
     {
         for (int neuron_index = 0, synapse_index = 0;
        // neuron_index <(int) list_of_neurons.size()+1
         neuron_index < 200
-         && 
+         || 
           /*,*/ synapse_index < 10100; 
             ++neuron_index, synapse_index = synapse_index + 100)
         
-        {
-            list_of_neurons[var]=list_of_neurons[var] -  (list_of_neurons[neuron_index]/ list_of_synapses[synapse_index]); // + на -   
+        { // // ошибка сегментации
+        
+//        if (synapse_index != list_of_synapses.rend()) { // check if we're not at the end
+//    it--; // move one step back to get the first element
+//}
+// if (synapse_index<10105)
+        
+            list_of_neurons[var]=list_of_neurons[var] -  (list_of_neurons[neuron_index]/  
+             list_of_synapses[synapse_index]); // + на - 
+              
+
+
         } // вычитаем нейроны
     }
     
@@ -137,20 +151,24 @@ b:
 
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  d:
+auto it = list_of_synapses.rbegin(); // point at the last element
+if (it != list_of_synapses.rend()) { // check if we're not at the end
+    it--; // move one step back to get the first element
+}
   //########################################################################################################
 // записываем вектор синапсов в файл
 //########################################################################################################  
-     QFile file2( "/home/viktor/my_projects_qt_2/Funktsiya_Resheniya_2/synapses.txt");
-    if (!file2.open(QFile::WriteOnly | QFile::Text)) {
-        throw std::runtime_error("Failed to open file");
-    }
+//     QFile file2( "/home/viktor/my_projects_qt_2/Funktsiya_Resheniya_2/synapses.txt");
+//    if (!file2.open(QFile::WriteOnly | QFile::Text)) {
+//        throw std::runtime_error("Failed to open file");
+//    }
 
-    QTextStream out(&file2);
-    for (unsigned long long synapse : list_of_synapses) {
-        out << synapse << "\n";
-    }
+//    QTextStream out(&file2);
+//    for (unsigned long long synapse : list_of_synapses) {
+//        out << synapse << "\n";
+//    }
 
-    file2.close();
+//    file2.close();
  //########################################################################################################
     std::cout << "The error has disappeared. Variable error = " << variable_error<< ". Это выход. "<<std::endl;
             std::cout << "list_of_neurons[200] = " << list_of_neurons[200]<< std::endl;
