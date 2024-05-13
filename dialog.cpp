@@ -86,14 +86,15 @@ const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
 // NOTE: решение
 //////////////////////////////////////////// Solution function ////////////////////////////////////////////////////////////
 b:
-    for ( var = 100; var < 200
-    // var <(int) list_of_neurons.size()-1
+    for ( var = 100; 
+   // var < 200
+   var <(int) list_of_neurons.size()+1
      ; ++var) // This is the range of neurons
     {
         for (int neuron_index = 0, synapse_index = 0;
-      //    neuron_index < list_of_neurons.size()
+        neuron_index <(int) list_of_neurons.size()+1
        // neuron_index < 198 //200
-        //  && 
+         && 
           /*,*/ synapse_index < 10100; 
             ++neuron_index, synapse_index = synapse_index + 100)
         
@@ -103,8 +104,8 @@ b:
     }
     
     for (int   neuron_index = 100, synapse_index = 10000;
-     //neuron_index < list_of_neurons.size(), 
-    neuron_index < 200; //200
+     neuron_index < (int)list_of_neurons.size()+1; 
+  //  neuron_index < 200; //200
       ++neuron_index, ++synapse_index)
     {
         list_of_neurons[200] = list_of_neurons[200] - (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
