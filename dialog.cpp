@@ -92,8 +92,8 @@ b:
      ; ++var) // This is the range of neurons
     {
         for (int neuron_index = 0, synapse_index = 0;
-        neuron_index <(int) list_of_neurons.size()+1
-       // neuron_index < 198 //200
+       // neuron_index <(int) list_of_neurons.size()+1
+        neuron_index < 200
          && 
           /*,*/ synapse_index < 10100; 
             ++neuron_index, synapse_index = synapse_index + 100)
@@ -104,8 +104,8 @@ b:
     }
     
     for (int   neuron_index = 100, synapse_index = 10000;
-     neuron_index < (int)list_of_neurons.size()+1; 
-  //  neuron_index < 200; //200
+    // neuron_index < (int)list_of_neurons.size()+1; 
+ neuron_index < 200; //200
       ++neuron_index, ++synapse_index)
     {
         list_of_neurons[200] = list_of_neurons[200] - (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
@@ -124,6 +124,7 @@ b:
              if (list_of_synapses[variable_synapse_index_counter] < 2147483646 ) // < 2147483646 или > 1
      {
         list_of_synapses[variable_synapse_index_counter]  =  list_of_synapses[variable_synapse_index_counter]+1;  // +1 или -1
+        variable_synapse_index_counter--;
        goto b;   
      }
    
