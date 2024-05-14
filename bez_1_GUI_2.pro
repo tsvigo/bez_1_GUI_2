@@ -1,5 +1,8 @@
 QT       += core gui
 
+#To enable, e.g., address sanitizer you have to write:
+
+CONFIG += sanitizer sanitize_address
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11

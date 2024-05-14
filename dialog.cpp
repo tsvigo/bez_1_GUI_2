@@ -15,10 +15,11 @@ using namespace std;
 ////////////
 int variable_synapse_index_counter=10100; 
 long long variable_error;
-int var ;
+int var =100;
+ int neuron_index = 0, synapse_index = 0;
 QString Nazvaniye_fayla_s_neyronami_i_signalom;
-std::vector<unsigned long long> list_of_neurons;
-std::vector<unsigned long long> list_of_synapses;
+std::vector<unsigned long long> list_of_neurons={};
+std::vector<unsigned long long> list_of_synapses={};
 //########################################################################################################
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
@@ -90,25 +91,28 @@ const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
 // NOTE: решение
 //////////////////////////////////////////// Solution function ////////////////////////////////////////////////////////////
 b:
+// int neuron_index = 0, synapse_index = 0;
     for ( var = 100; 
    var < 200
+   //,
+  // synapse_index<10101
+    
   // var <(int) list_of_neurons.size()//+1
      ; ++var) // This is the range of neurons
+  //   if (synapse_index<10101 && neuron_index < 200 )
     {
-        for (int neuron_index = 0, synapse_index = 0;
+        for ( neuron_index = 0, synapse_index = 0;
        // neuron_index <(int) list_of_neurons.size()+1
-        neuron_index < 200
-         || 
+     //   neuron_index < 200
+      //   &&
+     // ,
           /*,*/ synapse_index < 10100; 
             ++neuron_index, synapse_index = synapse_index + 100)
         
         { // // ошибка сегментации
         
-//        if (synapse_index != list_of_synapses.rend()) { // check if we're not at the end
-//    it--; // move one step back to get the first element
-//}
-// if (synapse_index<10105)
-        
+
+        if (neuron_index < 200)
             list_of_neurons[var]=list_of_neurons[var] -  (list_of_neurons[neuron_index]/  
              list_of_synapses[synapse_index]); // + на - 
               
@@ -119,9 +123,14 @@ b:
     
     for (int   neuron_index = 100, synapse_index = 10000;
     // neuron_index < (int)list_of_neurons.size()+1; 
- neuron_index < 200; //200
+ //neuron_index < 200
+    // &&
+   // ,
+ synapse_index < 10100
+ ; //200
       ++neuron_index, ++synapse_index)
     {
+   // if ( neuron_index < 200)
         list_of_neurons[200] = list_of_neurons[200] - (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
     }
 //   variable_error     = 1073741824-  list_of_neurons[200] ; // WARNING: изменение
@@ -151,24 +160,55 @@ b:
 
  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  d:
-auto it = list_of_synapses.rbegin(); // point at the last element
-if (it != list_of_synapses.rend()) { // check if we're not at the end
-    it--; // move one step back to get the first element
-}
-  //########################################################################################################
+//auto it = list_of_synapses.rbegin(); // point at the last element
+//if (it != list_of_synapses.rend()) { // check if we're not at the end
+//    it--; // move one step back to get the first element
+//}
+
+auto it = list_of_synapses.begin();
+size_t idx = std::distance(list_of_synapses.begin(), it);
+ std::cout << "Текущий индекс синапсов: " << idx<<std::endl; 
+ auto it2 = list_of_neurons.begin();
+size_t idx2 = std::distance(list_of_neurons.begin(), it2);
+ std::cout << "Текущий индекс нейронов: " << idx2<<std::endl;
+//########################################################################################################
 // записываем вектор синапсов в файл
+    // Convert the vector of unsigned long longs to a QString
+//    QString synapseText;
+//    for (const auto& synapse : list_of_synapses) {
+//        synapseText += QString::number(synapse) + "\n"; // add a newline character at the end of each line
+//    }
+
+//    // Set the text in the QTextEdit widget
+//    ui->textEdit->setText(synapseText);
+    
+//    // Create a QTextEdit object and set its text (e.g., from user input)
+//   // QTextEdit* textEdit = new QTextEdit();
+//   // QString text = "Initial text"; // or get the text from the widget
+
+//    // Save the text to a file
+//    QFile file2("/home/viktor/my_projects_qt_2/Funktsiya_Resheniya_2/synapses.txt"); // adjust the filename as needed
+//    if (!file2.open(QFile::WriteOnly | QFile::Truncate)) {
+//        qWarning() << "Failed to open file";
+       
+//    }
+
+//    QTextStream stream(&file);
+//    stream <<ui->textEdit->toPlainText(); // write the text to the file
+
+//    file2.close();
 //########################################################################################################  
-//     QFile file2( "/home/viktor/my_projects_qt_2/Funktsiya_Resheniya_2/synapses.txt");
-//    if (!file2.open(QFile::WriteOnly | QFile::Text)) {
+//    QFile file2( "/home/viktor/my_projects_qt_2/Funktsiya_Resheniya_2/synapses.txt");
+//    if (!file2.open(QFile::WriteOnly | QFile::Truncate)) {
 //        throw std::runtime_error("Failed to open file");
 //    }
 
 //    QTextStream out(&file2);
 //    for (unsigned long long synapse : list_of_synapses) {
-//        out << synapse << "\n";
-//    }
+//       out << synapse << "\n";
+//   }
 
-//    file2.close();
+//   file2.close();
  //########################################################################################################
     std::cout << "The error has disappeared. Variable error = " << variable_error<< ". Это выход. "<<std::endl;
             std::cout << "list_of_neurons[200] = " << list_of_neurons[200]<< std::endl;
