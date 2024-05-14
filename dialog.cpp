@@ -113,7 +113,7 @@ b:
         
 
         if (neuron_index < 200)
-            list_of_neurons[var]=list_of_neurons[var] -  (list_of_neurons[neuron_index]/  
+            list_of_neurons[var]=list_of_neurons[var] +  (list_of_neurons[neuron_index]/  
              list_of_synapses[synapse_index]); // + на - 
               
 
@@ -131,27 +131,37 @@ b:
       ++neuron_index, ++synapse_index)
     {
    // if ( neuron_index < 200)
-        list_of_neurons[200] = list_of_neurons[200] - (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
+        list_of_neurons[200] = list_of_neurons[200] + (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
     }
 //   variable_error     = 1073741824-  list_of_neurons[200] ; // WARNING: изменение
 //########################################################################################################   
 //variable_error     = list_of_neurons[200]-1073741824 ;
     variable_error     =   1073741824-list_of_neurons[200] ;
+    // надо чтобы list_of_neurons[200] стал равен 1073741824 или больше
 //########################################################################################################    
  std::cout << "variable_error = " << variable_error<< std::endl;
      if  ( variable_error <0)
     {
         
         std::cout << "Программа считает что это 1." << std::endl;
-        
+       // SUMMARY: AddressoverflowSanitizer: heap-buffer- ../../my_projects_qt_2/bez_1_GUI_2/dialog.cpp:147 
+       if (variable_synapse_index_counter>0) // вот была ошибка
+       {
+       // если все синапсы пройдены, поставлены на минимумы и ошибка не пропала.
              if (list_of_synapses[variable_synapse_index_counter] < 2147483646 ) // < 2147483646 или > 1
      {
-        list_of_synapses[variable_synapse_index_counter]  =  list_of_synapses[variable_synapse_index_counter]+1;  // +1 или -1
+        list_of_synapses[variable_synapse_index_counter]  =  list_of_synapses[variable_synapse_index_counter]-1;  // +1 или -1
         variable_synapse_index_counter--;
        goto b;   
      }
-   
-    }
+     }
+   else
+      {
+       std::cout << "все синапсы пройдены, поставлены на минимумы и ошибка не пропала." << std::endl;
+       std::cout << "list_of_neurons[200] = " <<list_of_neurons[200]<< std::endl;
+   }
+//########################################################################################################   
+    } // if  ( variable_error <0) // ошибка не пропала
     else {        std::cout << "Программа считает что это не 1." << std::endl;   goto d;  }
 //########################################################################################################
 
@@ -210,9 +220,9 @@ size_t idx2 = std::distance(list_of_neurons.begin(), it2);
 
 //   file2.close();
  //########################################################################################################
-    std::cout << "The error has disappeared. Variable error = " << variable_error<< ". Это выход. "<<std::endl;
-            std::cout << "list_of_neurons[200] = " << list_of_neurons[200]<< std::endl;
- std::cout << "variable_error = " << variable_error<< std::endl;
+//    std::cout << "The error has disappeared. Variable error = " << variable_error<< ". Это выход. "<<std::endl;
+//            std::cout << "list_of_neurons[200] = " << list_of_neurons[200]<< std::endl;
+// std::cout << "variable_error = " << variable_error<< std::endl;
 
 
 
