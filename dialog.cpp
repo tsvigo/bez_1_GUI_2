@@ -30,12 +30,12 @@ Dialog::Dialog(QWidget *parent)
     std::cout << "bez_1_GUI_2" << std::endl;  
 //########################################################################################################
 /// Сначала укажем какой файл с нейронами подстроить.
-     Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
-       tr("Открыть файл neyroni_i_signal.txt без 1 который надо подстроить."), 
-       "/home/viktor/my_projects_qt_2/Sgenerirovannye_fayly/peyzaji_2/", tr("Text Files (*.txt)"));
+//     Nazvaniye_fayla_s_neyronami_i_signalom = QFileDialog::getOpenFileName(this,
+//       tr("Открыть файл neyroni_i_signal.txt без 1 который надо подстроить."), 
+//       "/home/viktor/my_projects_qt_2/Sgenerirovannye_fayly/peyzaji_2/", tr("Text Files (*.txt)"));
 //########################################################################################################
 ////////////////////////////////////////////// загрузка нейронов и сигнала из файла в вектор
-
+Nazvaniye_fayla_s_neyronami_i_signalom="/home/viktor/my_scripts_4/kraynie_znacheniya/neyrony_2147483647.txt";
 
 
 const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
@@ -55,7 +55,10 @@ const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////// загрузка синапсов из файла в вектор
 
-    QFile file(  "/home/viktor/my_projects_qt_2/Funktsiya_Resheniya_2/synapses.txt");
+    QFile file(  
+ //   "/home/viktor/my_projects_qt_2/Funktsiya_Resheniya_2/synapses.txt"
+    "/home/viktor/my_scripts_4/kraynie_znacheniya/sinapsy_1.txt"
+    );
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
         throw std::runtime_error("Failed to open file");
     }
@@ -144,6 +147,7 @@ b:
     {
         
         std::cout << "Программа считает что это 1." << std::endl;
+        std::cout << "list_of_neurons[200] = " << list_of_neurons[200]<< std::endl;
        // SUMMARY: AddressoverflowSanitizer: heap-buffer- ../../my_projects_qt_2/bez_1_GUI_2/dialog.cpp:147 
        if (variable_synapse_index_counter>0) // вот была ошибка
        {
@@ -152,6 +156,7 @@ b:
      {
         list_of_synapses[variable_synapse_index_counter]  =  list_of_synapses[variable_synapse_index_counter]-1;  // +1 или -1
         variable_synapse_index_counter--;
+        std::cout << "list_of_neurons[200] = " << list_of_neurons[200]<< std::endl;
        goto b;   
      }
      }
@@ -221,7 +226,7 @@ size_t idx2 = std::distance(list_of_neurons.begin(), it2);
 //   file2.close();
  //########################################################################################################
 //    std::cout << "The error has disappeared. Variable error = " << variable_error<< ". Это выход. "<<std::endl;
-//            std::cout << "list_of_neurons[200] = " << list_of_neurons[200]<< std::endl;
+           std::cout << "list_of_neurons[200] = " << list_of_neurons[200]<< std::endl;
 // std::cout << "variable_error = " << variable_error<< std::endl;
 
 
