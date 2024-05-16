@@ -36,7 +36,7 @@ Dialog::Dialog(QWidget *parent)
 //       "/home/viktor/my_projects_qt_2/Sgenerirovannye_fayly/peyzaji_2/", tr("Text Files (*.txt)"));
 //########################################################################################################
 ////////////////////////////////////////////// загрузка нейронов и сигнала из файла в вектор
-Nazvaniye_fayla_s_neyronami_i_signalom="/home/viktor/my_scripts_4/kraynie_znacheniya/neyrony_0.txt";
+Nazvaniye_fayla_s_neyronami_i_signalom="/home/viktor/my_scripts_4/kraynie_znacheniya/neyrony_2147483647.txt";
 
 
 const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
@@ -117,7 +117,8 @@ b:
         
 
         if (neuron_index < 200)
-            list_of_neurons[var]=list_of_neurons[var] +  (list_of_neurons[neuron_index]/  
+            list_of_neurons[var]=list_of_neurons[var] //-5310911
+            +  (list_of_neurons[neuron_index]/  
              list_of_synapses[synapse_index]); // + на - 
               
 
@@ -136,11 +137,14 @@ b:
     {
    // if ( neuron_index < 200)
    if (list_of_synapses[synapse_index]!=0)
-        list_of_neurons[200] = list_of_neurons[200] + (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
+        list_of_neurons[200] = list_of_neurons[200] //-5310911
+        + (list_of_neurons[neuron_index] / list_of_synapses[synapse_index])
+        ; // + на -
     }
 //   variable_error     = 1073741824-  list_of_neurons[200] ; // WARNING: изменение
 //########################################################################################################   
 //variable_error     = list_of_neurons[200]-1073741824 ;
+list_of_neurons[200]=list_of_neurons[200]-1073741923;
     variable_error     =   1073741824-list_of_neurons[200] ;
     // надо чтобы list_of_neurons[200] стал равен 1073741824 или больше
 //########################################################################################################    
