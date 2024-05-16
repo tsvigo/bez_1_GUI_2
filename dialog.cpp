@@ -36,7 +36,8 @@ Dialog::Dialog(QWidget *parent)
 //       "/home/viktor/my_projects_qt_2/Sgenerirovannye_fayly/peyzaji_2/", tr("Text Files (*.txt)"));
 //########################################################################################################
 ////////////////////////////////////////////// загрузка нейронов и сигнала из файла в вектор
-Nazvaniye_fayla_s_neyronami_i_signalom="/home/viktor/my_scripts_4/kraynie_znacheniya/neyrony_2147483647.txt";
+Nazvaniye_fayla_s_neyronami_i_signalom=//"/home/viktor/my_scripts_4/kraynie_znacheniya/neyrony_2147483647.txt";
+"/home/viktor/my_scripts_4/kraynie_znacheniya/neyrony_0.txt";
 
 
 const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
@@ -58,7 +59,8 @@ const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
 
     QFile file(  
  //   "/home/viktor/my_projects_qt_2/Funktsiya_Resheniya_2/synapses.txt"
-    "/home/viktor/my_scripts_4/kraynie_znacheniya/sinapsy_2147483647.txt"
+   //  "/home/viktor/my_scripts_4/kraynie_znacheniya/sinapsy_2147483647.txt"
+    "/home/viktor/my_scripts_4/kraynie_znacheniya/sinapsy_1.txt"
     );
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
         throw std::runtime_error("Failed to open file");
