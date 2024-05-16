@@ -134,6 +134,7 @@ b:
       ++neuron_index, ++synapse_index)
     {
    // if ( neuron_index < 200)
+   if (list_of_synapses[synapse_index]!=0)
         list_of_neurons[200] = list_of_neurons[200] + (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
     }
 //   variable_error     = 1073741824-  list_of_neurons[200] ; // WARNING: изменение
@@ -152,7 +153,9 @@ b:
        if (variable_synapse_index_counter>0) // вот была ошибка
        {
        // если все синапсы пройдены, поставлены на минимумы и ошибка не пропала.
-             if (list_of_synapses[variable_synapse_index_counter] < 2147483646 ) // < 2147483646 или > 1
+             if (list_of_synapses[variable_synapse_index_counter] < 2147483646 
+             && list_of_synapses[variable_synapse_index_counter] >0
+             ) // < 2147483646 или > 1
      {
         list_of_synapses[variable_synapse_index_counter]  =  list_of_synapses[variable_synapse_index_counter]-1;  // +1 или -1
         variable_synapse_index_counter--;
