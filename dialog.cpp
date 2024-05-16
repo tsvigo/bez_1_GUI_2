@@ -20,6 +20,7 @@ int var =100;
 QString Nazvaniye_fayla_s_neyronami_i_signalom;
 std::vector<unsigned long long> list_of_neurons={};
 std::vector<unsigned long long> list_of_synapses={};
+bool all_sinapsi_proydeni=false;
 //########################################################################################################
 Dialog::Dialog(QWidget *parent)
     : QDialog(parent)
@@ -166,6 +167,7 @@ b:
    else
       {
        std::cout << "все синапсы пройдены, поставлены на минимумы и ошибка не пропала." << std::endl;
+       all_sinapsi_proydeni=true;
        std::cout << "list_of_neurons[200] = " <<list_of_neurons[200]<< std::endl;
    }
 //########################################################################################################   
@@ -230,6 +232,9 @@ size_t idx2 = std::distance(list_of_neurons.begin(), it2);
  //########################################################################################################
 //    std::cout << "The error has disappeared. Variable error = " << variable_error<< ". Это выход. "<<std::endl;
            std::cout << "list_of_neurons[200] = " << list_of_neurons[200]<< std::endl;
+           if (all_sinapsi_proydeni==true)
+           std::cout << "все синапсы пройдены, поставлены на минимумы и ошибка не пропала." << std::endl;
+           std::cout << "Конец программы." << std::endl;
 // std::cout << "variable_error = " << variable_error<< std::endl;
 
 
