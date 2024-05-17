@@ -2,7 +2,7 @@ QT       += core gui
 
 #To enable, e.g., address sanitizer you have to write:
 
-CONFIG += sanitizer sanitize_address
+#CONFIG += sanitizer sanitize_address
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -27,5 +27,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 //########################################################################################################
 //QMAKE_CXXFLAGS += -fsanitize=undefined
-QMAKE_CXXFLAGS += -fsanitize=undefined
-LIBS += -lubsan
+#QMAKE_CXXFLAGS += -fsanitize=undefined
+#LIBS += -lubsan
