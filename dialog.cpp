@@ -81,6 +81,15 @@ const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
     }
 
     file.close();
+//########################################################################################################
+list_of_neurons[200]=list_of_neurons[200]-1073741923; // поправка
+    variable_error     =   1073741824-list_of_neurons[200] ;    
+     std::cout << "variable_error = " << variable_error<< std::endl;
+     if  ( variable_error >0)
+     {
+      std::cout << "Программа считает что это не 1." << std::endl;
+      goto d;
+      }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  // QApplication app(argc, argv);
  // std::cout
@@ -243,8 +252,10 @@ size_t idx2 = std::distance(list_of_neurons.begin(), it2);
            std::cout << "list_of_neurons[200] = " << list_of_neurons[200]<< std::endl;
            if (all_sinapsi_proydeni==true)
            std::cout << "все синапсы пройдены, поставлены на минимумы и ошибка не пропала." << std::endl;
+           std::cout << "variable_error = " << variable_error<< std::endl;
+           
            std::cout << "Конец программы." << std::endl;
-std::cout << "variable_error = " << variable_error<< std::endl;
+
 
 
 
