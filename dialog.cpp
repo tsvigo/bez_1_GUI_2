@@ -163,7 +163,7 @@ list_of_neurons[200]=list_of_neurons[200]-1073741923; // поправка
        if (variable_synapse_index_counter>0) // вот была ошибка
        {
        // если все синапсы пройдены, поставлены на минимумы и ошибка не пропала.
-             if (list_of_synapses[variable_synapse_index_counter] < 2147483646 // почему 2147483646?
+             if (list_of_synapses[variable_synapse_index_counter] < 9223372036854775807 // почему 2147483646?
              && list_of_synapses[variable_synapse_index_counter] >0
              ) // < 2147483646 или > 1
      {
